@@ -154,7 +154,7 @@ color: #b0b0b0;
   overflow-y: auto;
 }
 
-.chatList .list {
+.chatList .contact {
   position: relative;
   width: 100%;
   display: flex;
@@ -169,11 +169,11 @@ color: #b0b0b0;
   background: #ebebeb;
 }
 
-.chatList .list:hover {
+.chatList .contact:hover {
   background: #f5f5f5;
 }
 
-.chatList .list .imgList {
+.chatList .contact .imgList {
   position: relative;
   min-width: 45px;
   height: 45px;
@@ -182,24 +182,24 @@ color: #b0b0b0;
   margin-right: 10px;
 }
 
-.chatList .list .infoList {
+.chatList .contact .infoList {
   position: relative;
   width: 100%;
 }
 
-.chatList .list .infoList .headList {
+.chatList .contact .infoList .headList {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
 }
 
-.chatList .list .infoList .headList h4 {
+.chatList .contact .infoList .headList h4 {
   font-size: 1rem;
   font-weight: 600;
   color: #111;
 }
 
-.chatList .list .infoList .headList .time {
+.chatList .contact .infoList .headList .time {
   font-size: 0.75rem;
   color: #aaa;
 }

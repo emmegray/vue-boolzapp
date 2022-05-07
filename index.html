@@ -14,7 +14,7 @@
   <title>Boolzapp</title>
 </head>
 <body>
-  <div class="container id="app">
+  <div class="container" id="app">
     <div class="LeftSide">
         <!-- Main User -->
       <div class="header">
@@ -47,52 +47,16 @@
       </div>
     <!-- Chat List -->
     <div class="chatList">
-      <div class="list active">
+      <div class="contact active" v-for="user in users">
         <div class="imgList">
-          <img src="img/avatar_1.png" alt="user avatar" class="cover">
+          <img :src="`img/avatar${user.avatar}.png`" alt="user avatar" class="cover">
         </div>
         <div class="infoList">
           <div class="headList">
-            <h4>Nome Utente</h4>
-            <p class="time">10:56</p>
+            <h4>{{user.name}}</h4>
+            <p class="time">{{user.messages[user.messages.length - 1].date}}</p>
           </div>
-          <div class="message_p_list">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-      </div>
-      <div class="list">
-        <div class="imgList">
-          <img src="img/avatar_2.png" alt="user avatar" class="cover">
-        </div>
-        <div class="infoList">
-          <div class="headList">
-            <h4>Nome Utente</h4>
-            <p class="time">10:56</p>
-          </div>
-          <div class="message_p_list">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-      </div>
-      <div class="list">
-        <div class="imgList">
-          <img src="img/avatar_3.png" alt="user avatar" class="cover">
-        </div>
-        <div class="infoList">
-          <div class="headList">
-            <h4>Nome Utente</h4>
-            <p class="time">10:56</p>
-          </div>
-          <div class="message_p_list">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-      </div>
-      <div class="list">
-        <div class="imgList">
-          <img src="img/avatar_4.png" alt="user avatar" class="cover">
-        </div>
-        <div class="infoList">
-          <div class="headList">
-            <h4>Nome Utente</h4>
-            <p class="time">10:56</p>
-          </div>
-          <div class="message_p_list">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <div class="message_p_list">{{user.messages[user.messages.length - 1].message}}</div>
         </div>
       </div>
     </div>
