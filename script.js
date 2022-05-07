@@ -169,6 +169,25 @@ const app = new Vue ({
   methods:{
     changeUser(userid){
       this.currentUser = userid;
+    },
+    sendMessage(event){
+      this.users[this.currentUser].messages.push(
+        {
+          date: '10/01/2020 15:30:55',
+          message: event.target.value,
+          status: 'sent'
+        }
+      )
+      setTimeout(()=>{
+        this.users[this.currentUser].messages.push(
+          {
+            date: '10/01/2020 15:30:55',
+            message: "Okay",
+            status: 'received'
+          }
+        )
+      },
+      1000)
     }
   }
   
