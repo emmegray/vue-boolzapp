@@ -45,31 +45,31 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
-    <!-- Chat List -->
-    <div class="chatList">
-      <div class="contact active" v-for="user in users">
-        <div class="imgList">
-          <img :src="`img/avatar${user.avatar}.png`" alt="user avatar" class="cover">
-        </div>
-        <div class="infoList">
-          <div class="headList">
-            <h4>{{user.name}}</h4>
-            <p class="time">{{user.messages[user.messages.length - 1].date}}</p>
+      <!-- Chat List -->
+      <div class="chatList">
+        <div class="contact" v-for="(user, index) in users" :class="{active: index === currentUser}" @click="changeUser(index)">
+          <div class="imgList">
+            <img :src="`img/avatar${user.avatar}.png`" alt="user avatar" class="cover">
           </div>
-          <div class="message_p_list">{{user.messages[user.messages.length - 1].message}}</div>
+          <div class="infoList">
+            <div class="headList">
+              <h4>{{user.name}}</h4>
+              <p class="time">{{user.messages[user.messages.length - 1].date}}</p>
+            </div>
+            <div class="message_p_list">{{user.messages[user.messages.length - 1].message}}</div>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <!-- Chat Box Header -->
     <div class="RightSide">
       <div class="header">
         <div class="imgChatBox">
           <div class="userimg">
-            <img src="img/avatar_1.png" alt="profile icon" class="cover" />
+            <img :src="`img/avatar${users[currentUser].avatar}.png`" alt="profile icon" class="cover" />
           </div>
         </div>
-        <h4>Nome Utente</h4><span class="userStatus">online</span>
+        <h4>{{users[currentUser].name}}</h4><span class="userStatus">online</span>
         <ul class="nav_icons">
           <li><i class="fa-solid fa-magnifying-glass"></i></li>
           <li><i class="fa-solid fa-paperclip"></i></li>
@@ -78,11 +78,8 @@
       </div>
       <!-- Chat Box -->
       <div class="chatBox">
-        <div class="message sent">
-          <p>Ciao! Son un messaggio inviato<br><span>12:00</span></p>
-        </div>
-        <div class="message received">
-          <p>Ciao! Io sono un messaggio ricevuto invece :O<br><span>12:05</span></p>
+        <div v-for="message in users[currentUser].messages" class="message" :class="message.status">
+          <p>{{message.message}}<br><span>{{message.date}}</span></p>
         </div>
       </div>
       <!-- Chat Input -->
