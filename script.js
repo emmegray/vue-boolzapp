@@ -1,6 +1,7 @@
 const app = new Vue ({
   el: `#app`,
   data:{
+    search:"",
     currentUser: 0,
     users: [
       {
@@ -171,9 +172,10 @@ const app = new Vue ({
       this.currentUser = userid;
     },
     sendMessage(event){
+      const currentTime = new Date();
       this.users[this.currentUser].messages.push(
         {
-          date: '10/01/2020 15:30:55',
+          date: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
           message: event.target.value,
           status: 'sent'
         }
@@ -181,13 +183,20 @@ const app = new Vue ({
       setTimeout(()=>{
         this.users[this.currentUser].messages.push(
           {
-            date: '10/01/2020 15:30:55',
+            date: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
             message: "Okay",
             status: 'received'
           }
         )
       },
       1000)
+    }
+  },
+  computed:{
+    searchResults() {
+      return this.users.filter(user => {
+        return user.name.toLowerCase().includes(this.search.toLowerCase())
+      })
     }
   }
   

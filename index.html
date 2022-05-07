@@ -41,13 +41,13 @@
       <!-- Searchchat -->
       <div class="search_chat">
         <div>
-          <input type="text" placeholder="Cerca o inizia una nuova chat">
+          <input v-model="search" type="text" placeholder="Cerca o inizia una nuova chat">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
       <!-- Chat List -->
       <div class="chatList">
-        <div class="contact" v-for="(user, index) in users" :class="{active: index === currentUser}" @click="changeUser(index)">
+        <div class="contact" v-for="(user, index) in searchResults" :class="{active: index === currentUser}" @click="changeUser(index)">
           <div class="imgList">
             <img :src="`img/avatar${user.avatar}.png`" alt="user avatar" class="cover">
           </div>
