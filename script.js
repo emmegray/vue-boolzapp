@@ -1,3 +1,6 @@
+dayjs.locale('it');
+dayjs.extend(window.dayjs_plugin_relativeTime);
+
 const app = new Vue ({
   el: `#app`,
   data:{
@@ -175,7 +178,7 @@ const app = new Vue ({
       const currentTime = new Date();
       this.users[this.currentUser].messages.push(
         {
-          date: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
+          date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
           message: event.target.value,
           status: 'sent'
         }
@@ -183,7 +186,7 @@ const app = new Vue ({
       setTimeout(()=>{
         this.users[this.currentUser].messages.push(
           {
-            date: `${currentTime.getHours()}:${currentTime.getMinutes()}`,
+            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
             message: "Okay",
             status: 'received'
           }
