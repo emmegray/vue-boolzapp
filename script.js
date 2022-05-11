@@ -173,6 +173,7 @@ const app = new Vue ({
   methods:{
     changeUser(userid){
       this.currentUser = userid;
+      this.search = "";
     },
     sendMessage(event){
       const currentTime = new Date();
@@ -183,6 +184,7 @@ const app = new Vue ({
           status: 'sent'
         }
       )
+      event.target.value="",
       setTimeout(()=>{
         this.users[this.currentUser].messages.push(
           {
