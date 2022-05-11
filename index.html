@@ -50,7 +50,7 @@
       </div>
       <!-- Chat List -->
       <div class="chatList">
-        <div class="contact" v-for="(user, index) in searchResults" :class="{active: index === currentUser}" @click="changeUser(index)">
+        <div class="contact" v-for="(user, index) in searchResults" :class="{active: index === currentUser}" v-if="user.visible" @click="changeUser(index)">
           <div class="imgList">
             <img :src="`img/avatar${user.avatar}.png`" alt="user avatar" class="cover">
           </div>

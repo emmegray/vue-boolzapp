@@ -197,10 +197,16 @@ const app = new Vue ({
   },
   computed:{
     searchResults() {
-      return this.users.filter(user => {
-        return user.name.toLowerCase().includes(this.search.toLowerCase())
-      })
+      return this.users.map(user => (
+        {
+        ...user, visible: (
+          user
+            .name
+            .toLowerCase()
+            .includes(this.search.toLowerCase())
+          ),
+        } 
+      ))
     }
   }
-  
 }) 
